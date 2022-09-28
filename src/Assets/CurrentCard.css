@@ -1,0 +1,45 @@
+.currentWheatherCard{
+    border-radius: 6px;
+    color: #fff;
+    background-color: violet;
+    margin-top: 16px;
+    padding: 12px;
+}
+
+.weatherLogo{
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.weatherStatus{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+}
+.temperature{
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.detailsRow{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.detailsCol{
+    margin-right: 20px;
+}
+.details {
+    width: 100%;
+    padding-left: 20px;
+    max-width: fit-content;
+  }
+
+.header,
+.footer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center,
+}
