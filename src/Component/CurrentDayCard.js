@@ -7,24 +7,23 @@ const OnedayCard = ({ currentWeatherData }) => {
     <div className='currentWheatherCard'>
       <div className='header'>
         <div>
-          <div>Today</div>
-          <div>{currentWeatherData.city}</div>
-          <div>
+          <div className='title-text'>{currentWeatherData.city}</div>
+          <div className='secondary-text'>
               {currentWeatherData.weatherResponse.weather[0].main}
             </div>
         </div>
         <div>
-          {currentWeatherData.weatherResponse.weather[0].main == "Clouds" &&
-            <div><BsFillCloudFill size={70}/></div>
+          {currentWeatherData.weatherResponse.weather[0].main === "Clouds" &&
+            <div><BsFillCloudFill size={140}/></div>
           }
-          {currentWeatherData.weatherResponse.weather[0].main == "Haze" &&
-            <div><BsCloudHazeFill size={70}/></div>
+          {currentWeatherData.weatherResponse.weather[0].main === "Haze" &&
+            <div><BsCloudHazeFill size={140}/></div>
           }
-          {currentWeatherData.weatherResponse.weather[0].main == "Clear" &&
-            <div><BsFillSunFill size={70}/></div>
+          {currentWeatherData.weatherResponse.weather[0].main === "Clear" &&
+            <div><BsFillSunFill size={140}/></div>
           }
-          {currentWeatherData.weatherResponse.weather[0].main == "Rain" &&
-            <div><BsFillCloudRainHeavyFill size={70}/></div>
+          {currentWeatherData.weatherResponse.weather[0].main === "Rain" &&
+            <div><BsFillCloudRainHeavyFill size={140}/></div>
           }
         </div>
       </div>

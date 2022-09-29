@@ -1,12 +1,14 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import '../Assets/ForecastCard.css';
-import dateFormat, { masks } from "dateformat";
+import '../Assets/CurrentCard.css';
+import dateFormat from "dateformat";
 import { BsFillCloudFill, BsFillCloudRainHeavyFill, BsCloudHazeFill, BsFillSunFill } from "react-icons/bs";
 
 const ForecastCard = ({ forecastData }) => {
     return (
         <div>
+            <div className='title-text'>Daily Forecast</div>
             <div>
                 <Accordion defaultActiveKey="0">
                     {forecastData.map((item, key) => (
@@ -14,26 +16,26 @@ const ForecastCard = ({ forecastData }) => {
                             <Accordion.Header>
                                 <div className='forecastCard'>
                                     <div className='img'>
-                                        {item.weather[0].main == "Clouds" &&
+                                        {item.weather[0].main === "Clouds" &&
                                             <div><BsFillCloudFill size={70} /></div>
                                         }
-                                        {item.weather[0].main == "Haze" &&
+                                        {item.weather[0].main === "Haze" &&
                                             <div><BsCloudHazeFill size={70} /></div>
                                         }
-                                        {item.weather[0].main == "Clear" &&
+                                        {item.weather[0].main === "Clear" &&
                                             <div><BsFillSunFill size={70} /></div>
                                         }
-                                        {item.weather[0].main == "Rain" &&
+                                        {item.weather[0].main === "Rain" &&
                                             <div><BsFillCloudRainHeavyFill size={70} /></div>
                                         }
                                     </div>
-                                    <div className='daysTitle'>
+                                    <div className='daysTitle title-text'>
                                         {dateFormat(item.dt_txt, "dddd")}
                                     </div>
                                 </div>
                             </Accordion.Header>
                             <Accordion.Body>
-                                <div className="daily-details-grid">
+                                <div className="daily-details-grid secondary-text">
                                     <div className="daily-details-grid-item">
                                         <label>Pressure:</label>
                                         <label>{item.main.pressure}</label>
