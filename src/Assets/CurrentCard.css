@@ -7,8 +7,8 @@
 }
 
 .weatherLogo{
-    max-width: 80px;
-    max-height: 80px;
+    max-width: auto;
+    max-height: auto;
 }
 
 .weatherStatus{

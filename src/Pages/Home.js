@@ -16,9 +16,6 @@ export default function () {
     const [dailyforecast, setDaily] = useState(null);
     const location = useGeoLocation();
 
-    const [data, setData] = useState(null);
-    const currentWeatherFetch = useState(null);
-
     const now = new Date();
 
     function getData(lat, lon, city) {
@@ -76,7 +73,7 @@ export default function () {
 
     }
 
-    const handleOnSearchChange = (searchData, location) => {
+    const handleOnSearchChange = (searchData) => {
         const [lat, lon] = searchData.value.split(" ");
         getData(lat,lon, searchData.label)
         console.log("Data Loaded")

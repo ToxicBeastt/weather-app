@@ -15,16 +15,16 @@ const CurrentDayForecastCard = (({ forecastData }) => {
                         <Card className="Current-card">
                             <div className='img'>
                                 {item.weather[0].main == "Clouds" &&
-                                    <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.png")} /></div>
+                                    <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
                                 }
                                 {item.weather[0].main == "Haze" &&
-                                    <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.png")} /></div>
+                                    <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
                                 }
                                 {item.weather[0].main == "Clear" &&
                                     <div><img className='weatherLogo' src={require("../Assets/Image/Sunny.png")} /></div>
                                 }
                                 {item.weather[0].main == "Rain" &&
-                                    <div><img className='weatherLogo' src={require("../Assets/Image/Rainy.png")} /></div>
+                                    <div><img className='weatherLogo' src={require("../Assets/Image/Rainy.svg")} /></div>
                                 }
                             </div>
                             <Card.Body>
