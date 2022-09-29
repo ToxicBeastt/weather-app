@@ -27,3 +27,13 @@
     margin-left: 16px;
     color:black;
 }
+.forecastCard{
+    display: flex;
+}
+.daysTitle{
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    display:flex;
+    margin-left: 12px;
+}

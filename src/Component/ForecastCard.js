@@ -1,8 +1,8 @@
 import React from 'react';
-import dateFormat, { masks } from "dateformat";
-import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
-import '../Assets/ForecastCard.css'
+import '../Assets/ForecastCard.css';
+import dateFormat, { masks } from "dateformat";
+import { BsFillCloudFill, BsFillCloudRainHeavyFill, BsCloudHazeFill, BsFillSunFill } from "react-icons/bs";
 
 const ForecastCard = ({ forecastData }) => {
     return (
@@ -12,21 +12,25 @@ const ForecastCard = ({ forecastData }) => {
                     {forecastData.map((item, key) => (
                         <Accordion.Item eventKey={key}>
                             <Accordion.Header>
-                                <div className='img'>
-                                    {item.weather[0].main == "Clouds" &&
-                                        <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
-                                    }
-                                    {item.weather[0].main == "Haze" &&
-                                        <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
-                                    }
-                                    {item.weather[0].main == "Clear" &&
-                                        <div><img className='weatherLogo' src={require("../Assets/Image/Sunny.png")} /></div>
-                                    }
-                                    {item.weather[0].main == "Rain" &&
-                                        <div><img className='weatherLogo' src={require("../Assets/Image/Rainy.svg")} /></div>
-                                    }
+                                <div className='forecastCard'>
+                                    <div className='img'>
+                                        {item.weather[0].main == "Clouds" &&
+                                            <div><BsFillCloudFill size={70} /></div>
+                                        }
+                                        {item.weather[0].main == "Haze" &&
+                                            <div><BsCloudHazeFill size={70} /></div>
+                                        }
+                                        {item.weather[0].main == "Clear" &&
+                                            <div><BsFillSunFill size={70} /></div>
+                                        }
+                                        {item.weather[0].main == "Rain" &&
+                                            <div><BsFillCloudRainHeavyFill size={70} /></div>
+                                        }
+                                    </div>
+                                    <div className='daysTitle'>
+                                        {dateFormat(item.dt_txt, "dddd")}
+                                    </div>
                                 </div>
-
                             </Accordion.Header>
                             <Accordion.Body>
                                 <div className="daily-details-grid">

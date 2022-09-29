@@ -9,6 +9,7 @@ import ForecastCard from '../Component/ForecastCard';
 import CurrentDayForecastCard from '../Component/CurrentDayForecastCard';
 import dateFormat from "dateformat";
 import useGeoLocation from '../Hooks/useGeolocation';
+import { GEO_API_HEADER, GEO_API_URL } from "../Api/Api";
 
 export default function () {
     const [currentWeather, setCurrentWeather] = useState(null);
@@ -18,7 +19,7 @@ export default function () {
 
     const now = new Date();
 
-    function getData(lat, lon, city) {
+    function getData(lat, lon) {
         const currentWeatherFetch =
             axios.get(
                 WEATHER_API_URL + "/weather",
@@ -52,7 +53,9 @@ export default function () {
 
                 // get Today Forcast by 3 Hours
                 for (let i = 0; i < 7; i++) {
-                    arrayTodayForecast[i] = forecastResponse.list[i]
+                    if (dateFormat(forecastResponse.list[0].dt_txt, "dddd") === dateFormat(forecastResponse.list[i].dt_txt, "dddd")) {
+                        arrayTodayForecast[i] = forecastResponse.list[i]
+                    }
                 }
 
                 // get 5 Days Forcast
@@ -65,22 +68,30 @@ export default function () {
                     i = i + 1;
                 }
 
-                setCurrentWeather({ city: city, weatherResponse })
+                setCurrentWeather({ city: weatherResponse.name, weatherResponse })
                 setForecast(arrayTodayForecast)
                 setDaily(arrayDailyForecast)
-                console.log(arrayDailyForecast)
+                console.log(weatherResponse)
             })
 
     }
 
     const handleOnSearchChange = (searchData) => {
         const [lat, lon] = searchData.value.split(" ");
-        getData(lat,lon, searchData.label)
+        getData(lat, lon)
         console.log("Data Loaded")
     };
+    useEffect(() =>{
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+            getData(position.coords.latitude, position.coords.longitude )
+          });
+        console.log('Once')
+    }, [])
 
     return (
-        <Container>
+        <Container className='container'>
             <Search onSearchChange={handleOnSearchChange} />
             {currentWeather && <OnedayCard currentWeatherData={currentWeather} />}
             {forecastWeather && <CurrentDayForecastCard forecastData={forecastWeather} />}

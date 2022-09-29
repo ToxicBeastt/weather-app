@@ -2,7 +2,7 @@ import React from 'react'
 import dateFormat, { masks } from "dateformat";
 import Card from 'react-bootstrap/Card';
 import "../Assets/CurrentDayForecast.css"
-
+import { BsFillCloudFill, BsFillCloudRainHeavyFill, BsCloudHazeFill, BsFillSunFill } from "react-icons/bs";
 
 const CurrentDayForecastCard = (({ forecastData }) => {
     const now = new Date();
@@ -15,16 +15,16 @@ const CurrentDayForecastCard = (({ forecastData }) => {
                         <Card className="Current-card">
                             <div className='img'>
                                 {item.weather[0].main == "Clouds" &&
-                                    <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
+                                    <div><BsFillCloudFill size={70}/></div>
                                 }
                                 {item.weather[0].main == "Haze" &&
-                                    <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
+                                    <div><BsCloudHazeFill size={70}/></div>
                                 }
                                 {item.weather[0].main == "Clear" &&
-                                    <div><img className='weatherLogo' src={require("../Assets/Image/Sunny.png")} /></div>
+                                    <div><BsFillSunFill size={70}/></div>
                                 }
                                 {item.weather[0].main == "Rain" &&
-                                    <div><img className='weatherLogo' src={require("../Assets/Image/Rainy.svg")} /></div>
+                                    <div><BsFillCloudRainHeavyFill size={70}/></div>
                                 }
                             </div>
                             <Card.Body>

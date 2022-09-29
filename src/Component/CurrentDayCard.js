@@ -1,5 +1,6 @@
 import React from 'react';
 import '../Assets/CurrentCard.css'
+import { BsFillCloudFill, BsFillCloudRainHeavyFill, BsCloudHazeFill, BsFillSunFill } from "react-icons/bs";
 
 const OnedayCard = ({ currentWeatherData }) => {
   return (
@@ -14,16 +15,16 @@ const OnedayCard = ({ currentWeatherData }) => {
         </div>
         <div>
           {currentWeatherData.weatherResponse.weather[0].main == "Clouds" &&
-            <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
+            <div><BsFillCloudFill size={70}/></div>
           }
           {currentWeatherData.weatherResponse.weather[0].main == "Haze" &&
-            <div><img className='weatherLogo' src={require("../Assets/Image/Cloudy.svg")} /></div>
+            <div><BsCloudHazeFill size={70}/></div>
           }
           {currentWeatherData.weatherResponse.weather[0].main == "Clear" &&
-            <div><img className='weatherLogo' src={require("../Assets/Image/Sunny.png")} /></div>
+            <div><BsFillSunFill size={70}/></div>
           }
           {currentWeatherData.weatherResponse.weather[0].main == "Rain" &&
-            <div><img className='weatherLogo' src={require("../Assets/Image/Rainy.svg")} /></div>
+            <div><BsFillCloudRainHeavyFill size={70}/></div>
           }
         </div>
       </div>
